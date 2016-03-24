@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/jquery-1.8.3.min.js"></script>
+    <script>
+        jQuery(function($) {
+// 使用 jQuery 异步提交表单
+            $('#f1').submit(function() {
+                $.ajax({
+                    url: '/change',
+                    data: $('#f1').serialize(),
+                    type: "post",
+                    cache : false,
+                    success: function(data)
+                    {alert(data);}
+                });
+                return false;
+            });
+        });
+    </script>
+</head>
+<body>
+<form id="f1" name="f1">
+    <input name="a1" />
+    <input name="a2" />
+    <input id="File1" type="file" name="File1"/>
+    <input id="Submit1" type="submit" value="submit" />
+</form>
+</body>
+</html>

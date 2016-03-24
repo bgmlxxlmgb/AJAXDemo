@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>AJAX Demo</title>
+    <script type="text/javascript">
+        function loadXMLDoc(str) {
+            var val = str;
+            var xmlhttp;
+            if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp=new XMLHttpRequest();
+            }
+            else {
+            // code for IE6, IE5
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            if(xmlhttp==null){
+                alert("不能使用AJAX！")
+            }
+            xmlhttp.onreadystatechange=function(){
+                if (xmlhttp.readyState==4 && xmlhttp.status==200){
+                    var responseText1 = xmlhttp.responseText;
+                    document.getElementById("text").innerHTML = responseText1;
+                }
+            }
+            xmlhttp.open("GET","/change?demo="+val,true);
+            xmlhttp.send();
+        }
+    </script>
+</head>
+<body>
+<input type="text"placeholder="please input something here" name="demo" onkeyup="loadXMLDoc(this.value)"><br>
+<span id="text"></span><br>
+<input type="text"><br>
+<input type="text"><br>
+<input type="text"><br>
+</body>
+</html>
